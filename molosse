@@ -1,0 +1,79 @@
+import random
+import math
+
+def create_cell():
+    bluetooth_address = "00:11:22:33:44:55"  # Remplacez par votre adresse Bluetooth réelle
+    
+    # Générer 3 sorties aléatoires
+    outputs = []
+    for _ in range(3):
+        output = random.randint(0, 100)
+        outputs.append(output)
+    
+    # Vérifier l'état d'envoi des données pour chaque composant
+    for output in outputs:
+        if output < 50:
+            print(f"Le composant avec l'adresse Bluetooth {bluetooth_address} a une sortie inférieure à 50.")
+        elif output >= 50 and output < 80:
+            print(f"Le composant avec l'adresse Bluetooth {bluetooth_address} a une sortie entre 50 et 80.")
+        else:
+            print(f"Le composant avec l'adresse Bluetooth {bluetooth_address} a une sortie supérieure ou égale à 80.")
+
+# Appel de la fonction pour créer la cellule
+create_cell()
+# Appel de la fonction pour créer la cellule "boucle dormante"
+create_cell()
+# Enregistrement sur le nom des loop
+loop = "boucle dormante"
+# Calculer le logarithme de chaque sortie en présence de pi
+for output in outputs:
+    logarithm = math.log(output, math.pi)
+    print(f"Le logarithme de la sortie {output} en présence de pi est {logarithm}.")
+    
+    # Calculer la racine carrée de chaque sortie
+    for output in outputs:
+        square_root = math.sqrt(output)
+        print(f"La racine carrée de la sortie {output} est {square_root}.")
+
+    # Calculer la valeur absolue de chaque sortie
+    for output in outputs:
+        absolute_value = abs(output)
+        print(f"La valeur absolue de la sortie {output} est {absolute_value}.")
+        
+        # Calculer le sinus de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+        for output in outputs:
+            sine = math.sin(math.radians(abs(output)))
+            print(f"Le sinus de la sortie {output} en radians de la valeur absolue de la sortie est {sine}.")
+            
+            # Calculer le cosinus de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+            for output in outputs:
+                cosine = math.cos(math.radians(abs(output)))
+                print(f"Le cosinus de la sortie {output} en radians de la valeur absolue de la sortie est {cosine}.")
+                
+                # Calculer la tangente de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+                for output in outputs:
+                    tangent = math.tan(math.radians(abs(output)))
+                    print(f"La tangente de la sortie {output} en radians de la valeur absolue de la sortie est {tangent}.")
+                    
+                    # Calculer l'arc sinus de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+                    for output in outputs:
+                        arcsine = math.asin(math.radians(abs(output)))
+                        print(f"L'arc sinus de la sortie {output} en radians de la valeur absolue de la sortie est {arcsine}.")
+                        
+                        # Calculer l'arc cosinus de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+                        for output in outputs:
+                            arccosine = math.acos(math.radians(abs(output)))
+                            print(f"L'arc cosinus de la sortie {output} en radians de la valeur absolue de la sortie est {arccosine}.")
+                            
+                            # Calculer l'arc tangente de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+                            for output in outputs:
+                                arctangent = math.atan(math.radians(abs(output)))
+                                print(f"L'arc tangente de la sortie {output} en radians de la valeur absolue de la sortie est {arctangent}.")
+                                
+                                # Calculer l'hyperbole sinus de chaque sortie en radians de la sortie la valeur absolue de la sortie.
+                                for output in outputs:
+                                    sinh = math.sinh(math.radians(abs(output)))
+                                    print(f"L'hyperbole sinus de la sortie {output} en radians de la valeur absolue de la sortie est {sinh}.")
+                                    
+                                    # Calculer l'hyperbole cosinus de chaque sortie en radians de
+                                    # la sortie la valeur absolue de la sortie.
