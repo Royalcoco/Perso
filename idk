@@ -1,0 +1,66 @@
+import random
+import gzip
+import os
+import time
+from cryptography.fernet import Fernet
+import requests
+
+# Étape 1: Création de 2 millions de points
+points = [(random.uniform(-1000, 1000), random.uniform(-1000, 1000)) for _ in range(2000000)]
+
+# Écriture des points dans un fichier texte
+with open('points.txt', 'w') as f:
+    for point in points:
+        f.write(f"{point[0]},{point[1]}\n")
+
+# Étape 2: Compression du fichier texte
+with open('points.txt', 'rb') as f_in:
+    with gzip.open('points.txt.gz', 'wb') as f_out:
+        f_out.writelines(f_in)
+
+# Étape 3: Simulation de la perte de données pendant la décompression
+def simulate_loss(file_path, loss_ratio):
+    with gzip.open(file_path, 'rb') as f_in:
+        data = f_in.read()
+        total_length = len(data)
+        loss_length = int(total_length * loss_ratio)
+        lost_data = data[:-loss_length]
+        with open('points_lost.txt', 'wb') as f_out:
+            f_out.write(lost_data)
+        return loss_length
+
+# Exemple de perte de 10% des données
+loss_ratio = 0.1
+loss_length = simulate_loss('points.txt.gz', loss_ratio)
+
+# Calcul des points décompressés
+with open('points_lost.txt', 'r') as f:
+    decompressed_points = len(f.readlines())
+
+points_lost = 2000000 - decompressed_points
+
+# Étape 4: Simulation de ping
+def simulate_ping(interval, duration):
+    start_time = time.time()
+    while time.time() - start_time < duration:
+        print("Ping...")
+        time.sleep(interval)
+
+# Simulation d'un ping toutes les secondes pendant 10 secondes
+simulate_ping(1, 10)
+
+# Étape 5: Chiffrement des données et envoi à un point source
+# Génération d'une clé de chiffrement
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
+
+# Chiffrement des données
+data = f"Points perdus: {points_lost}"
+encrypted_data = cipher_suite.encrypt(data.encode())
+
+# Affichage des données chiffrées
+print("Données chiffrées: ", encrypted_data)
+
+# Envoi des données à un point source sur le web
+response = requests.post('https://example.com/receive_data', data={'encrypted_data': encrypted_data})
+print("Réponse du serveur: ", response.text)
