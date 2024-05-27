@@ -1,0 +1,181 @@
+npm install archiver trash
+node script.js
+
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
+const { exec } = require('child_process');
+const crypto = require('crypto');
+const { send } = require('process');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function processInterface() {
+    console.log("1. Process data");
+    console.log("2. Reboot system (simulate 3% block)");
+    console.log("3. Security check");
+    console.log("4. Exit");
+    rl.question("Enter your choice: ", (choice) => {
+        switch (choice) {
+            case '1':
+                processData();
+                break;
+            case '2':
+                rebootSystem();
+                break;
+            case '3':
+                securityCheck();
+                break;
+            case '4':
+                rl.close();
+                break;
+            default:
+                console.log("Invalid choice. Please try again.");
+                processInterface();
+        }
+    });
+}
+
+function processData() {
+    console.log("Processing data...");
+    setTimeout(() => {
+        console.log("Data processed.");
+        processInterface();
+    }, 1000);
+}
+
+function rebootSystem() {
+    console.log("Simulating system reboot with 3% block...");
+    setTimeout(() => {
+        console.log("System rebooted (simulated).");
+        processInterface();
+    }, 1000);
+}
+
+function securityCheck() {
+    console.log("Performing security check for potential backdoors...");
+    setTimeout(() => {
+        console.log("Security check completed.");
+        processInterface();
+    }, 1000);
+}
+
+function createZipFile() {
+    console.log("Creating zip file...");
+    const output = fs.createWriteStream('archive.zip');
+    const archive = require('archiver')('zip');
+
+    output.on('close', () => {
+        console.log('Zip file created.');
+        processInterface();
+    });
+
+    archive.pipe(output);
+
+    archive.directory('.', false);
+    archive.finalize();
+}
+
+function listAndDivideFolders(folderPath) {
+    fs.readdir(folderPath, { withFileTypes: true }, (err, files) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        const folders = files.filter(dirent => dirent.isDirectory());
+        const count = folders.length;
+        const result = Math.floor(count / 4);
+        console.log(`Number of folders: ${count}`);
+        console.log(`Result after division by 4: ${result}`);
+        processInterface();
+    });
+}
+
+function createFolders(folderPath, numFolders) {
+    for (let i = 0; i < numFolders; i++) {
+        const folderName = `folder_${i}`;
+        fs.mkdirSync(path.join(folderPath, folderName));
+    }
+    console.log(`${numFolders} folders created.`);
+    processInterface();
+}
+
+function generateRandomKey() {
+    return crypto.randomBytes(32).toString('hex');
+}
+
+function encryptFile(filePath, key) {
+    const cipher = crypto.createCipher('aes-256-cbc', key);
+    const input = fs.createReadStream(filePath);
+    const output = fs.createWriteStream(`${filePath}.enc`);
+
+    input.pipe(cipher).pipe(output);
+    output.on('finish', () => {
+        console.log('File encrypted.');
+        processInterface();
+    });
+}
+
+function decryptFile(filePath, key) {
+    const decipher = crypto.createDecipher('aes-256-cbc', key);
+    const input = fs.createReadStream(filePath);
+    const output = fs.createWriteStream(filePath.replace('.enc', ''));
+
+    input.pipe(decipher).pipe(output);
+    output.on('finish', () => {
+        console.log('File decrypted.');
+        processInterface();
+    });
+}
+
+function compressFolder(folderPath, outputPath) {
+    const output = fs.createWriteStream(`${outputPath}.zip`);
+    const archive = require('archiver')('zip');
+
+    output.on('close', () => {
+        console.log(`Folder ${folderPath} compressed to ${outputPath}.zip`);
+        processInterface();
+    });
+
+    archive.pipe(output);
+    archive.directory(folderPath, false);
+    archive.finalize();
+}
+
+function sendToTrash(filePath) {
+    const trash = require('trash');
+    trash([filePath]).then(() => {
+        console.log(`File ${filePath} sent to trash.`);
+        processInterface();
+    });
+}
+
+function deleteFolder(folderPath) {
+    fs.rmdir(folderPath, { recursive: true }, (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(`Folder ${folderPath} deleted.`);
+        processInterface();
+    });
+}
+
+function listFiles(folderPath) {
+    fs.readdir(folderPath, (err, files) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log("Files:");
+        files.forEach(file => {
+            console.log(file);
+        });
+        processInterface();
+    });
+}
+
+processInterface();
