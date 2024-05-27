@@ -1,0 +1,172 @@
+import subprocess
+import subprocess
+
+def calculer_perte_signal(puissance_emise, puissance_recue):
+    perte_signal = 10 * math.log10(puissance_emise / puissance_recue)
+    return perte_signal
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
+
+def calculer_ping(adresse_ip):
+    command = ['ping', '-c', '4', adresse_ip]  # Change the number of pings as needed
+    result = subprocess.run(command, capture_output=True, text=True)
+    output = result.stdout
+    # Parse the output to extract the ping statistics
+    # You can use regular expressions or string manipulation to extract the desired information
+    # Calculate the average ping time and return it
+    # Example: average_ping = parse_output_and_calculate_average_ping(output)
+    return average_ping
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
+
+# Calculate ping for each connection
+adresse_ip_1 = '192.168.0.1'
+ping_1 = calculer_ping(adresse_ip_1)
+print("Ping for connection 1:", ping_1)
+
+adresse_ip_2 = '192.168.0.2'
+ping_2 = calculer_ping(adresse_ip_2)
+print("Ping for connection 2:", ping_2)
+
+# Add more connections as needed
+# Calculate the average ping time for all connections.
+average_ping = (ping_1 + ping_2) / 2
+print("Average ping time:", average_ping)
+
+def calculer_perte_signal(puissance_emise, puissance_recue):
+    perte_signal = 10 * math.log10(puissance_emise / puissance_recue)
+    return perte_signal
+
+def calculer_ping(adresse_ip):
+    command = ['ping', '-c', '4', adresse_ip]  # Change the number of pings as needed
+    result = subprocess.run(command, capture_output=True, text=True)
+    output = result.stdout
+    # Parse the output to extract the ping statistics
+    # You can use regular expressions or string manipulation to extract the desired information
+    # Calculate the average ping time and return it
+    # Example: average_ping = parse_output_and_calculate_average_ping(output)
+    return average_ping
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
+
+# Calculate ping for each connection
+adresse_ip_1 = ' '.join ([' '.join (i) for i in range (len (adresse_ip_1))])
+ping_1 = calculer_ping(adresse_ip_1)
+print("Ping for connection 1:", ping_1)
+
+adresse_ip_2 = ' '.join ([' '.join (i) for i in range (len (adresse_ip_2))])
+ping_2 = calculer_ping(adresse_ip_2)
+print("Ping for connection 2:", ping_2)
+
+# Add more connections as needed
+# Calculate the average ping time for all connections.
+average_ping = (ping_1 + ping_2) / 2
+print("Average ping time:", average_ping)
+
+def calculer_perte_signal(puissance_emise, puissance_recue):
+    perte_signal = 10 * math.log10(puissance_emise / puissance_recue)
+    return perte_signal
+
+def calculer_ping(adresse_ip):
+    command = ['ping', '-c', '4', adresse_ip]  # Change the number of pings as needed
+    result = subprocess.run(command, capture_output=True, text=True)
+    output = result.stdout
+    # Parse the output to extract the ping statistics
+    # You can use regular expressions or string manipulation to extract the desired information
+    # Calculate the average ping time and return it
+    # Example: average_ping = parse_output_and_calculate_average_ping(output)
+    return average_ping
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
+
+# Calculate ping for each connection
+adresse_ip_1 = ' '.join ([' '.join (i) for i in range (len (adresse_ip_1))])
+ping_1 = calculer_ping(adresse_ip_1)
+print("Ping for connection 1:", ping_1)
+
+adresse_ip_2 = ' '.join ([' '.join (i) for i in range (len (adresse_ip_2))])
+ping_2 = calculer_ping(adresse_ip_2)
+print("Ping for connection 2:", ping_2)
+
+def calculer_perte_signal(puissance_emise, puissance_recue):
+    perte_signal = 10 * math.log10(puissance_emise / puissance_recue)
+    return perte_signal
+
+def calculer_ping(adresse_ip):
+    command = ['ping', '-c', '4', adresse_ip]  # Change the number of pings as needed
+    result = subprocess.run(command, capture_output=True, text=True)
+    output = result.stdout
+    # Parse the output to extract the ping statistics
+    # You can use regular expressions or string manipulation to extract the desired information
+    # Calculate the average ping time and return it
+    # Example: average_ping = parse_output_and_calculate_average_ping(output)
+    return output
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
+
+# Calculate ping for each connection
+adresse_ip_1 = '192.168.0.1'
+ping_1 = calculer_ping(adresse_ip_1)
+print("Ping for connection 1:", ping_1)
+
+adresse_ip_2 = '192.168.0.2'
+ping_2 = calculer_ping(adresse_ip_2)
+print("Ping for connection 2:", ping_2)
+
+# Add more connections as needed
+
+# Calculate the average ping time for all connections.
+average_ping = (ping_1 + ping_2) / 2
+print("Average ping time:", average_ping)
+
+def comparer_perte_octets(perte_signal, octets_par_ping):
+    if perte_signal > 0:
+        return "La perte de signal est trop élevée pour une communication fiable."
+    else:
+        return "La perte de signal est acceptable. Vous pouvez continuer la communication."
+
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+octets_par_ping = 64  # Nombre d'octets par ping
+resultat_comparaison = comparer_perte_octets(perte_signal, octets_par_ping)
+print(resultat_comparaison)
+
+def comparer_perte_octets(perte_signal, octets_par_ping):
+    if perte_signal > 0:
+        return "La perte de signal est trop élevée pour une communication fiable."
+    else:
+        return "La perte de signal est acceptable. Vous pouvez continuer la communication."
+    
+def calculer_perte_signal(puissance_emise, puissance_recue):
+    perte_signal = 10 * math.log10(puissance_emise / puissance_recue)
+    return perte_signal
+
+def calculer_ping(adresse_ip):
+    command = ['ping', '-c', '4', adresse_ip]  # Change the number of pings as needed
+    result = subprocess.run(command, capture_output=True, text=True)
+    output = result.stdout
+    # Parse the output to extract the ping statistics
+    # You can use regular expressions or string manipulation to extract the desired information
+    # Calculate the average ping time and return it
+    # Example: average_ping = parse_output_and_calculate_average_ping(output)
+    return output
+
+puissance_emise = 100  # Puissance émise en dBm
+puissance_recue = 50  # Puissance reçue en dBm
+perte_signal = calculer_perte_signal(puissance_emise, puissance_recue)
+print("La perte de signal est de", perte_signal, "dB")
